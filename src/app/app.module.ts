@@ -28,7 +28,15 @@ import { TaskService } from './story/task.service'
     BrowserModule,
     FormsModule,
     HttpModule,
+    RouterModule.forRoot([{path: 'story', component: StoryComponent},
+    {path: 'task/:id', component: TaskComponent},
+    {path: 'sprint', component: SprintComponent},
+    {path: 'release', component: ReleaseComponent},
+    {path: 'project', component: ProjectComponent},
+    {path: 'backlog', component: BacklogComponent}
+  ])
   ],
+
   providers: [TaskService],
   bootstrap: [AppComponent]
 })

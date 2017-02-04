@@ -3,10 +3,10 @@ import { Story } from '../story';
 import { Task } from '../task';
 import { TaskService } from './task.service'
 @Component({
+  moduleId: this.module.id,
   selector: 'app-story',
   templateUrl: './story.component.html',
   styleUrls: ['./story.component.css'],
-  //providers: [TaskService]
 })
 export class StoryComponent implements OnInit {
   story : Story;

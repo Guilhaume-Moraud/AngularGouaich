@@ -1,12 +1,11 @@
-<h1>------------Page Story------------</h1>
+
 <h2>My Story</h2>
 <p>Description: {{story.description}}</p>
 <p>Effort: {{story.effort}}</p>
 <ul class="tasks"> Liste des tâches
   <li *ngFor="let task of tasks" [class.selected]="task === selectedTask" (click)="onSelect(task)">
-    <span class="badge">{{task.temps}}</span>{{task.description}}
+    <span class="badge">{{task.id}}</span>{{task.description}} - {{task.temps}}
 
   </li>
 </ul>
 <app-task [task]="selectedTask">a task</app-task>
-<h1>------------FIN Page Story------------</h1>
