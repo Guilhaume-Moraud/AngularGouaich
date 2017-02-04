@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Story } from '../story';
 import { Task } from '../task';
 import { TaskService } from './task.service'
@@ -10,11 +11,12 @@ import { TaskService } from './task.service'
 })
 export class StoryComponent implements OnInit {
   story : Story;
-  constructor(private taskService: TaskService) { }
+
   tasks : Task[];
   effort : number;
   description : string;
   selectedTask : Task;
+  constructor(private taskService: TaskService, private router: Router) { }
 
   ngOnInit() {
     this.getTasks();
@@ -28,5 +30,7 @@ export class StoryComponent implements OnInit {
 
   }
 
-
+  gotoDetail(): void {
+   this.router.navigate(['/task', this.selectedTask.id]);
+ }
 }

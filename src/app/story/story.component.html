@@ -8,4 +8,10 @@
 
   </li>
 </ul>
-<app-task [task]="selectedTask">a task</app-task>
+<!--<app-task [task]="selectedTask">a task</app-task>-->
+<div *ngIf="selectedTask">
+  <h2>
+    la tâche sélectionnée est: {{selectedTask.description}} et dure {{selectedTask.temps}}
+  </h2>
+  <button (click)="gotoDetail()">View Details</button>
+</div>

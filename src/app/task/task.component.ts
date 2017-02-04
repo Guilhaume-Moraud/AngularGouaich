@@ -25,5 +25,8 @@ ngOnInit() {
    .subscribe(task => this.task = task);
 
 }
+goBack(): void {
+  this.location.back();
+}
 
 }
