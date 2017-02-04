@@ -1,28 +1,28 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Story } from '../story'
-import { Task } from '../task'
+import { Story } from '../story';
+import { Task } from '../task';
+import { TaskService } from './task.service'
 @Component({
   selector: 'app-story',
   templateUrl: './story.component.html',
-  styleUrls: ['./story.component.css']
+  styleUrls: ['./story.component.css'],
+  //providers: [TaskService]
 })
 export class StoryComponent implements OnInit {
   story : Story;
-  constructor() { }
-  strings  : string[] = ["tata", "toto"] ;
+  constructor(private taskService: TaskService) { }
   tasks : Task[];
   effort : number;
   description : string;
   selectedTask : Task;
+
   ngOnInit() {
-
-    var task1 = new Task('task1','10min');
-    var task2 = new Task('task2','20min');
-    var task3 = new Task('task3','30min');
-    this.story = new Story("Story 1",4,[task1, task2, task3]);
-    this.tasks = this.story.tasks;
+    this.getTasks();
+    this.story = new Story("Story 1",4,this.tasks);
   }
-
+  getTasks() : void {
+    this.taskService.getTasks().then(tasks => this.tasks = tasks);
+  }
   onSelect(task: Task): void{
     this.selectedTask = task;
 

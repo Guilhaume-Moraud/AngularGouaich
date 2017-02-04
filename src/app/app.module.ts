@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
+import { RouterModule }   from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { ProjectComponent } from './project/project.component';
@@ -11,6 +11,8 @@ import { ReleaseComponent } from './release/release.component';
 import { StoryComponent } from './story/story.component';
 import { TaskComponent } from './task/task.component';
 import { BacklogComponent } from './backlog/backlog.component';
+
+import { TaskService } from './story/task.service'
 
 @NgModule({
   declarations: [
@@ -25,9 +27,9 @@ import { BacklogComponent } from './backlog/backlog.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent, StoryComponent]
+  providers: [TaskService],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
