@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import {Sprint} from '../sprint'
 
 @Component({
   selector: 'app-sprint',
@@ -6,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sprint.component.css']
 })
 export class SprintComponent implements OnInit {
-
-  constructor() { }
+  public sprint : Sprint;
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }

@@ -20,7 +20,7 @@ export class StoryComponent implements OnInit {
 
   ngOnInit() {
     this.getTasks();
-    this.story = new Story("Story 1",4,this.tasks);
+    this.story = new Story(1,"Story 1",4,this.tasks);
   }
   getTasks() : void {
     this.taskService.getTasks().then(tasks => this.tasks = tasks);
@@ -37,7 +37,7 @@ export class StoryComponent implements OnInit {
  add(description: string, temps: string): void {
 
   if (!description) { return; }
-  this.taskService.create(description,temps)
+  this.taskService.create(description,temps,this.story.id)
     .then(task => {
       this.tasks.push(task);
       this.selectedTask = null;

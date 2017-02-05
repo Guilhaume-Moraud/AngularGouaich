@@ -9,10 +9,10 @@
     <button class="delete"(click)="delete(task); $event.stopPropagation()">x</button>
   </li>
 </ul>
-<!--<app-task [task]="selectedTask">a task</app-task>-->
 <div *ngIf="selectedTask">
   <h2>
     la tâche sélectionnée est: {{selectedTask.description}} et dure {{selectedTask.temps}}
+    appartient à la story {{selectedTask.idStoryRef}}
   </h2>
   <button (click)="gotoDetail()">View Details</button>
 </div>

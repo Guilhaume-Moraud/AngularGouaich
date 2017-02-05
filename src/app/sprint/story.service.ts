@@ -1,20 +1,20 @@
 
-import { Task } from '../task';
+import { Story} from '../story';
 import { Injectable }    from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
-export class TaskService {
+export class StoryService {
 
-  private tasksUrl = 'api/tasks'
+  private storiesUrl = 'api/stories'
 
   constructor(private http: Http) { }
 
-  getTasks(): Promise<Task[]>{
-    return this.http.get(this.tasksUrl)
+  getTasks(): Promise<Story[]>{
+    return this.http.get(this.storiesUrl)
             .toPromise()
-            .then(response => response.json().data as Task[])
+            .then(response => response.json().data as Story[])
             .catch(this.handleError);
 }
 
@@ -25,11 +25,11 @@ private handleError(error: any): Promise<any> {
     //return Promise.resolve(TASKS);
 
 
-  getTask(id: number): Promise<Task> {
-    const url = `${this.tasksUrl}/${id}`;
+  getTask(id: number): Promise<Story> {
+    const url = `${this.storiesUrl}/${id}`;
       return this.http.get(url)
         .toPromise()
-        .then(response => response.json().data as Task)
+        .then(response => response.json().data as Story)
         .catch(this.handleError);
 
 
@@ -37,24 +37,24 @@ private handleError(error: any): Promise<any> {
 
 private headers = new Headers({'Content-Type': 'application/json'});
 
-update(task: Task): Promise<Task> {
-  const url = `${this.tasksUrl}/${task.id}`;
+update(story: Story): Promise<Story> {
+  const url = `${this.storiesUrl}/${story.id}`;
   return this.http
-    .put(url, JSON.stringify(task), {headers: this.headers})
+    .put(url, JSON.stringify(story), {headers: this.headers})
     .toPromise()
-    .then(() => task)
+    .then(() => story)
     .catch(this.handleError);
 }
 
-create(description: string, temps: string, idStoryRef: number): Promise<Task> {
+create(description: string, effort: string): Promise<Story> {
   return this.http
-    .post(this.tasksUrl, JSON.stringify({description: description, temps: temps, idStoryRef: idStoryRef}), {headers: this.headers})
+    .post(this.storiesUrl, JSON.stringify({description: description, effort: effort}), {headers: this.headers})
     .toPromise()
     .then(res => res.json().data)
     .catch(this.handleError);
 }
 delete(id: number): Promise<void> {
-  const url = `${this.tasksUrl}/${id}`;
+  const url = `${this.storiesUrl}/${id}`;
   return this.http.delete(url, {headers: this.headers})
     .toPromise()
     .then(() => null)
