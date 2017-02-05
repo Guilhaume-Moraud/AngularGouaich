@@ -29,4 +29,9 @@ goBack(): void {
   this.location.back();
 }
 
+save(): void {
+  this.taskService.update(this.task)
+    .then(() => this.goBack());
+}
+
 }

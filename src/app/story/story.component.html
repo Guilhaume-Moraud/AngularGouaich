@@ -4,8 +4,9 @@
 <p>Effort: {{story.effort}}</p>
 <ul class="tasks"> Liste des tâches
   <li *ngFor="let task of tasks" [class.selected]="task === selectedTask" (click)="onSelect(task)">
-    <span class="badge">{{task.id}}</span>{{task.description}} - {{task.temps}}
-
+    <span class="badge">{{task.id}}</span>
+    <span>{{task.description}} - {{task.temps}}</span>
+    <button class="delete"(click)="delete(task); $event.stopPropagation()">x</button>
   </li>
 </ul>
 <!--<app-task [task]="selectedTask">a task</app-task>-->
@@ -14,4 +15,11 @@
     la tâche sélectionnée est: {{selectedTask.description}} et dure {{selectedTask.temps}}
   </h2>
   <button (click)="gotoDetail()">View Details</button>
+</div>
+<div>
+  <label>description de la tâche :</label> <input #taskName />
+  <label>Temps estimé :</label> <input #taskTime />
+  <button (click)="add(taskName.value, taskTime.value); taskName.value=''; taskTime.value=''" >
+    Add
+  </button>
 </div>

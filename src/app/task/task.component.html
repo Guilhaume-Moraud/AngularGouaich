@@ -5,12 +5,11 @@
   </h2>
   <p>Durée estimée de la tache : {{task.temps}}</p>
   <div >
-    <label>Id: </label>
-    <input [(ngModel)]="task.id" placeholder="{{task.id}}"><br>
       <label>description: </label>
       <input [(ngModel)]="task.description" placeholder="{{task.description}}"><br>
       <label>Temps: </label>
       <input [(ngModel)]="task.temps" placeholder="{{task.temps}}">
     </div>
+    <button (click)="save()">Save</button>
     <button (click)="goBack()">Back</button>
 </div>
